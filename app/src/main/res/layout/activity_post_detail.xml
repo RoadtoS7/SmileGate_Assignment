@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.smilegate.assignment.ui.postdetail.PostDetailViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.diary_detail.DiaryDetailActivity">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    style="@style/Widget.MaterialComponents.Toolbar.Surface"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:menu="@menu/post_detail_menu" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <TextView
+                android:id="@+id/post_detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@{viewModel.post.title}"
+                android:textAppearance="@style/TextAppearance.PostDetail.Title"
+                android:textColor="@color/darkGrey"
+                android:textFontWeight="500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appbar_layout"
+                tools:text="What are your biggest worries or concerns these days?" />
+
+
+            <TextView
+                android:id="@+id/viewgroup_profile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskr"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textColor="@color/grey"
+                app:date="@{viewModel.post.date}"
+                app:layout_constraintEnd_toEndOf="@id/post_detail_title"
+                app:layout_constraintStart_toStartOf="@id/post_detail_title"
+                app:layout_constraintTop_toBottomOf="@id/post_detail_title"
+                tools:text="2021.11.20 13:50" />
+
+
+            <View
+                android:id="@+id/view_delimiter"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/lightGrey"
+                app:layout_constraintTop_toBottomOf="@id/viewgroup_profile" />
+
+            <TextView
+                android:id="@+id/textview_diarydetail_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:text="@{viewModel.post.content}"
+                android:textAppearance="@style/TextAppearance.PostDetail.Content"
+                app:layout_constraintTop_toBottomOf="@id/view_delimiter" />
+
+            <TextView
+                android:id="@+id/write_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lightGrey"
+                android:fontFamily="@font/notosanskr"
+                android:gravity="center_horizontal"
+                android:paddingHorizontal="71dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="15dp"
+                android:text="@string/post_detail_write_comment"
+                android:textAppearance="@style/TextAppearance.PostDetail.WriteComment"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>
