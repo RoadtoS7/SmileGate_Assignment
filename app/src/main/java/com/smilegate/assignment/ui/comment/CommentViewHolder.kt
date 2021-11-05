@@ -1,11 +1,10 @@
-package CommentViewHolder
+package com.smilegate.assignment.ui.comment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.smilegate.assignment.domain.Comment
 import com.smilegate.assignment.databinding.ItemCommentBinding
-import com.smilegate.assignment.ui.comment.CommentAdapter
 
 class CommentViewHolder(
     private val binding: ItemCommentBinding

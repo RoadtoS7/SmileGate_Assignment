@@ -1,6 +1,5 @@
 package com.smilegate.assignment.ui.comment
 
-import CommentViewHolder.CommentViewHolder
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
