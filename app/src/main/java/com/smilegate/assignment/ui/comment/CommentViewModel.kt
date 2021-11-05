@@ -4,12 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
-import androidx.room.Insert
 import com.smilegate.assignment.domain.Post
 import com.smilegate.assignment.domain.BlogRepository
 import com.smilegate.assignment.domain.Comment
 import com.smilegate.assignment.domain.SingleLiveEvent
-import com.smilegate.assignment.di.AuthManager
+import com.smilegate.assignment.util.AuthManager
 import com.smilegate.assignment.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.smilegate.assignment.domain.BlogRepository
 import com.smilegate.assignment.domain.Comment
 import com.smilegate.assignment.domain.SingleLiveEvent
-import com.smilegate.assignment.di.AuthManager
+import com.smilegate.assignment.util.AuthManager
 import com.smilegate.assignment.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
