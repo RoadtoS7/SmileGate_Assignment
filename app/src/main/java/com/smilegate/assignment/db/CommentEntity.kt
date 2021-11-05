@@ -1,23 +1,19 @@
 package com.smilegate.assignment.db
 
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.smilegate.assignment.domain.Comment
 import java.util.*
 
-@Entity(
-    tableName = "comment",
-    foreignKeys = [
-        ForeignKey(entity = PostEntity::class, parentColumns = ["id"], childColumns = ["postId"])
-    ]
-)
+@Entity(tableName = "comment")
 class CommentEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val time: Date,
     val content: String,
     val postId: Int,
-    val parentCommentId: Int? = null,
     val writer: String,
-    val writerPw: String
-)
+    val writerPw: String,
+    val date: Date
+) {
+    fun toComment(): Comment = Comment(id, content, postId, writer, writerPw, date)
+}

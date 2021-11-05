@@ -1,41 +1,38 @@
 package com.smilegate.assignment.db
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface BlogDao {
     @Query("SELECT * FROM post")
-    fun getAllPosts(): List<PostEntity>
+    fun getAllPosts(): LiveData<List<PostEntity>>
+
+    @Query("SELECT * FROM post WHERE id = :postId LIMIT 1")
+    suspend fun getPost(postId: Int): PostEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPost(postEntity: PostEntity)
+    suspend fun insertPost(postEntity: PostEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertPreparedPost(postEntity: PostEntity)
 
     @Delete()
-    fun deletePost(postEntity: PostEntity)
+    suspend fun deletePost(postEntity: PostEntity)
 
     @Update
-    fun updatePost(postEntity: PostEntity)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCategory(categoryEntity: CategoryEntity)
-
-    @Transaction
-    @Query("SELECT * FROM post where :categoryId == categoryId")
-    fun getPostsByCategory(categoryId: Int): List<PostEntity>
-
-    @Query("SELECT * FROM category")
-    fun getAllCategory(): List<CategoryEntity>
-
-    @Query("SELECT * FROM category WHERE parentCategoryId = :parentCategoryId")
-    fun getChildrenCategories(parentCategoryId: Int): List<CategoryEntity>
+    suspend fun updatePost(postEntity: PostEntity)
 
     @Transaction
     @Query("SELECT * FROM comment WHERE :postId == postId")
-    fun getComments(postId: Int): List<CommentEntity>
+    fun getComments(postId: Int): LiveData<List<CommentEntity>>
 
     @Insert
-    fun insertComment(commentEntity: CommentEntity)
+    suspend fun insertComment(commentEntity: CommentEntity)
+
+    @Insert
+    fun insertPreparedComments(comments: List<CommentEntity>)
 
     @Delete
-    fun deleteComment(commentEntity: CommentEntity)
+    suspend fun deleteComment(commentEntity: CommentEntity)
 }
